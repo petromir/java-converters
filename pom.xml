@@ -7,7 +7,7 @@
     <groupId>com.petromirdzhunev</groupId>
     <artifactId>java-converters</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <description>Reference implementation of Java Conversion APIs</description>
+    <description>Reference implementations of Java Conversion APIs</description>
 
     <modules>
         <module>json-converter</module>
@@ -27,6 +27,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <version>1.18.44</version>
             <optional>true</optional>
         </dependency>
     </dependencies>
