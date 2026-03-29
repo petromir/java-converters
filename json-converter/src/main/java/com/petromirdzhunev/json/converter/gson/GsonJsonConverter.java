@@ -7,7 +7,7 @@ import java.util.Set;
 import com.google.gson.Gson;
 import com.petromirdzhunev.json.conversion.api.JsonConverter;
 
-public class GsonJsonConverter implements JsonConverter<Gson> {
+public class GsonJsonConverter implements JsonConverter {
 
 	@Override
 	public <TYPE> String objectToJson(final TYPE type) {

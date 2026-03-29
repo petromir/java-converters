@@ -8,7 +8,7 @@ import com.petromirdzhunev.json.conversion.api.JsonConverter;
 
 import tools.jackson.databind.json.JsonMapper;
 
-public class JacksonJsonConverter implements JsonConverter<JsonMapper> {
+public class JacksonJsonConverter implements JsonConverter {
 
 	@Override
 	public <TYPE> String objectToJson(final TYPE type) {
