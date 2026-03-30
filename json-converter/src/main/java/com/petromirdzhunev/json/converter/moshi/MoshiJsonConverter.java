@@ -7,7 +7,7 @@ import java.util.Set;
 import com.petromirdzhunev.json.conversion.api.JsonConverter;
 import com.squareup.moshi.Moshi;
 
-public class MoshiJsonConverter implements JsonConverter<Moshi> {
+public class MoshiJsonConverter implements JsonConverter {
 
 	@Override
 	public <TYPE> String objectToJson(final TYPE type) {
