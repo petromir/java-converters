@@ -51,7 +51,7 @@ public class JacksonJsonConverter implements JsonConverter {
 			return jsonMapper.readValue(json, listType);
 		} catch (JacksonException e) {
 			throw new RuntimeException(
-					"Error while converting JSON to List [json=%s, listType=%s]".formatted(json,
+					"Failed to convert JSON to List [json=%s, listType=%s]".formatted(json,
 							listType.toCanonical()), e);
 		}
 	}
