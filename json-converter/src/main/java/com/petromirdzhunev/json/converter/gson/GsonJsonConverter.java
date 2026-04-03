@@ -14,6 +14,9 @@ import com.petromirdzhunev.json.conversion.api.JsonConverter;
 
 public class GsonJsonConverter implements JsonConverter {
 
+	private static final int TYPE_CACHE_INITIAL_CAPACITY = 32;
+	private static final float CACHE_LOAD_FACTOR = 0.75f;
+
 	private final Gson gson;
 	private final Map<Class<?>, Type> listTypeCache;
 	private final Map<Class<?>, Type> setTypeCache;
@@ -23,9 +26,9 @@ public class GsonJsonConverter implements JsonConverter {
 		this.gson = gson;
 		// Optimize initial capacity and concurrency level based on available CPUs.
 		final int cores = Runtime.getRuntime().availableProcessors();
-		this.listTypeCache = new ConcurrentHashMap<>(32, 0.75f, cores);
-		this.setTypeCache = new ConcurrentHashMap<>(32, 0.75f, cores);
-		this.mapTypeCache = new ConcurrentHashMap<>(32, 0.75f, cores);
+		this.listTypeCache = new ConcurrentHashMap<>(TYPE_CACHE_INITIAL_CAPACITY, CACHE_LOAD_FACTOR, cores);
+		this.setTypeCache = new ConcurrentHashMap<>(TYPE_CACHE_INITIAL_CAPACITY, CACHE_LOAD_FACTOR, cores);
+		this.mapTypeCache = new ConcurrentHashMap<>(TYPE_CACHE_INITIAL_CAPACITY, CACHE_LOAD_FACTOR, cores);
 	}
 
 	@Override

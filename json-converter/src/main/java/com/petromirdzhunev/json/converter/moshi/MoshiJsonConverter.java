@@ -16,6 +16,10 @@ import com.squareup.moshi.Types;
 
 public class MoshiJsonConverter implements JsonConverter {
 
+	private static final int ADAPTER_CACHE_INITIAL_CAPACITY = 64;
+	private static final int TYPE_CACHE_INITIAL_CAPACITY = 32;
+	private static final float CACHE_LOAD_FACTOR = 0.75f;
+
 	private final Moshi moshi;
 	private final Map<Type, JsonAdapter<?>> adapterCache;
 	private final Map<Class<?>, Type> listTypeCache;
@@ -26,10 +30,10 @@ public class MoshiJsonConverter implements JsonConverter {
 		this.moshi = moshi;
 		// Optimize initial capacity and concurrency level based on available CPUs.
 		final int cores = Runtime.getRuntime().availableProcessors();
-		this.adapterCache = new ConcurrentHashMap<>(64, 0.75f, cores);
-		this.listTypeCache = new ConcurrentHashMap<>(32, 0.75f, cores);
-		this.setTypeCache = new ConcurrentHashMap<>(32, 0.75f, cores);
-		this.mapTypeCache = new ConcurrentHashMap<>(32, 0.75f, cores);
+		this.adapterCache = new ConcurrentHashMap<>(ADAPTER_CACHE_INITIAL_CAPACITY, CACHE_LOAD_FACTOR, cores);
+		this.listTypeCache = new ConcurrentHashMap<>(TYPE_CACHE_INITIAL_CAPACITY, CACHE_LOAD_FACTOR, cores);
+		this.setTypeCache = new ConcurrentHashMap<>(TYPE_CACHE_INITIAL_CAPACITY, CACHE_LOAD_FACTOR, cores);
+		this.mapTypeCache = new ConcurrentHashMap<>(TYPE_CACHE_INITIAL_CAPACITY, CACHE_LOAD_FACTOR, cores);
 	}
 
 	@Override
