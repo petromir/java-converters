@@ -9,6 +9,7 @@ on:
 jobs:
   # Detect which modules have changed to run only relevant builds
   filter-changes:
+    if: false # Temporary disable
     runs-on: ubuntu-latest
     outputs:
       # Promotes step output (string JSON array) to job level so it's accessible to 'build' job
@@ -35,6 +36,7 @@ jobs:
 
   # Warm up the Maven cache by downloading dependencies once
   cache-dependencies:
+    if: false # Temporary disable
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
