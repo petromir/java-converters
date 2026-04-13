@@ -33,8 +33,26 @@ jobs:
               - '.github/workflows/ci.yml'
               - 'checkstyl*.xml'
 
+  # Warm up the Maven cache by downloading dependencies once
+  cache-dependencies:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Set up JDK 25
+        uses: actions/setup-java@v5
+        with:
+          java-version: '25'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Download dependencies
+        # Use a more thorough plugin to ensure all dependencies and plugins are cached
+        run: mvn de.qaware.maven:go-offline-maven-plugin:resolve-dependencies -B
+
   build:
-    needs: filter-changes # Declares dependency to access 'filter-changes' job outputs
+    needs: [filter-changes, cache-dependencies] # Wait for dependencies to be cached
     # Only run if the 'modules' array is not empty
     if: ${{ needs.filter-changes.outputs.modules != '[]' && needs.filter-changes.outputs.modules != '' }}
     strategy:
@@ -54,7 +72,7 @@ jobs:
         with:
           java-version: '25'
           distribution: 'temurin'
-          cache: maven
+          cache: maven # This will now find the warmed-up cache from the 'cache-dependencies' job
 
       - name: Run tests
         run: mvn -pl ${{ matrix.module }} -am clean test
