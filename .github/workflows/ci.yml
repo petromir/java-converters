@@ -50,7 +50,7 @@ jobs:
       - name: Download dependencies
         # 'verify -DskipTests' is the most reliable way to force Maven to download 
         # everything (plugins, provided deps, test deps) needed for the build.
-        run: mvn verify -DskipTests -B
+        run: mvn verify -DskipTests -Denforcer.skip=true -B
 
 
   build:
