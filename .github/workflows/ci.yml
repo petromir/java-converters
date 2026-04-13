@@ -48,8 +48,10 @@ jobs:
           cache: maven
 
       - name: Download dependencies
-        # Use a more thorough plugin to ensure all dependencies and plugins are cached
-        run: mvn de.qaware.maven:go-offline-maven-plugin:resolve-dependencies -B
+        # 'verify -DskipTests' is the most reliable way to force Maven to download 
+        # everything (plugins, provided deps, test deps) needed for the build.
+        run: mvn verify -DskipTests -B
+
 
   build:
     needs: [filter-changes, cache-dependencies] # Wait for dependencies to be cached
