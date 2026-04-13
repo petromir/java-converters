@@ -87,7 +87,7 @@
                         </dependency>
                     </dependencies>
                     <configuration>
-                        <configLocation>checkstylе.xml</configLocation>
+                        <configLocation>checkstyle.xml</configLocation>
                         <inputEncoding>UTF-8</inputEncoding>
                         <consoleOutput>true</consoleOutput>
                         <failsOnError>true</failsOnError>
