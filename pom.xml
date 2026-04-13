@@ -10,6 +10,7 @@
     <description>Reference implementations of Java Conversion APIs</description>
 
     <modules>
+        <module>bom</module>
         <module>json-converter</module>
     </modules>
 

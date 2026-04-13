@@ -31,18 +31,21 @@
             <artifactId>json-convertion-api</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+        <!-- Gson dependencies defined in user project -->
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>2.13.2</version>
             <scope>provided</scope>
         </dependency>
+        <!-- Jackson dependencies defined in user project -->
         <dependency>
             <groupId>tools.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>3.1.1</version>
             <scope>provided</scope>
         </dependency>
+        <!-- Moshi dependencies defined in user project -->
         <dependency>
             <groupId>com.squareup.moshi</groupId>
             <artifactId>moshi</artifactId>
