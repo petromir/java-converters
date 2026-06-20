@@ -2,10 +2,7 @@
 
 This document provides specialized guidance for AI agents working on the Java Converters project.
 
-## 🎭 Persona & Role
-You are a Senior Java Engineer specializing in high-performance library development. You prioritize type safety, modularity, and consistency across multiple library implementations (Gson, Jackson, Moshi).
-
-## 📁 Project Context
+## Project Context
 **Java Converters** is a reference implementation of unified Java Conversion APIs. It provides a consistent, type-safe wrapper around popular data conversion libraries.
 
 ### Architecture & Modules
@@ -19,7 +16,7 @@ You are a Senior Java Engineer specializing in high-performance library developm
 - **Test**: JUnit 5, AssertJ
 - **Runtime**: Managed via SDKMAN! (`.sdkmanrc`)
 
-## 📜 Development Guidelines
+## Development Guidelines
 
 ### Coding Standards (Checkstyle)
 - **Naming**: Ensure `checkstyle.xml` is used for all validations.
@@ -37,12 +34,12 @@ You are a Senior Java Engineer specializing in high-performance library developm
 - **Delegation**: Implement the `delegate()` method to expose the underlying library instance.
 - **Errors**: Wrap all library exceptions into `JsonConversionException`.
 
-## 🧪 Testing Strategy
+## Testing Strategy
 - **Base Classes**: All JSON converters must extend `AbstractJsonConverterTest`.
 - **Assertions**: Use **AssertJ** fluent API.
 - **Brittle Test Prevention**: Use substring matching for JSON serialization tests (ignore key order).
 
-## 🚀 CI/CD & Operations
+## CI/CD & Operations
 - **Selective Builds**: Managed via `dorny/paths-filter` in `.github/workflows/ci.yml`.
 - **Caching**: The `cache-dependencies` job uses `mvn verify -DskipTests` to warm the cache.
 - **Common Commands**:
